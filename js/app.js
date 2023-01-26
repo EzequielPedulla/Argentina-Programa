@@ -11,9 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.querySelector("#formulario");
 
   // Asignar eventos
-
-  inputEmail.addEventListener("input", validar);
-  inputNombre.addEventListener("input", validar);
-  inputMensaje.addEventListener("input", validar);
-  formulario.addEventListener("submit", enviarEmail);
+  inputNombre.addEventListener("blur", validar);
+  inputEmail.addEventListener("blur", validar);
+  inputMensaje.addEventListener("blur", validar);
+  function validar(e) {
+    console.log(e.target.value);
+  }
 });
