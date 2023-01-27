@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     email: "",
     mensaje: "",
   };
+
   // Seleccionar los elementos de la interfaz
   const inputNombre = document.querySelector("#nombre");
   const inputEmail = document.querySelector("#email");
@@ -18,17 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
   function validar(e) {
     if (e.target.value.trim() === "") {
       mostrarAlerta(`el Campo ${e.target.id} es obligatorio`);
-    } else {
-      console.log("si hay algo");
+      return;
     }
+    if (e.target.id === "email" && !validarEmail(e.target.value)) {
+      mostrarAlerta("El email no es válido");
+      return;
+    }
+
+    limpiarAlerta();
+    //Asignar los valores
+    email[e.target.name] = e.target.value.trim().toLowerCase();
+    //Comprobar el objeto de email
+    comprobarEmail();
   }
 
   function mostrarAlerta(mensaje) {
-    //Comprueba si ya existe na alerta
-    const alerta = document.querySelector(".alerta");
-    if (alerta) {
-      alerta.remove();
-    }
+    limpiarAlerta();
+
     //Generar alerta en HTMl
     const error = document.createElement("P");
     error.textContent = mensaje;
@@ -36,5 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //inyectar el error al formulario
     formulario.appendChild(error);
+  }
+  //Comprueba si ya existe na alerta
+  function limpiarAlerta() {
+    const alerta = document.querySelector(".alerta");
+    if (alerta) {
+      alerta.remove();
+    }
+  }
+  function validarEmail(email) {
+    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    const resultado = regex.test(email);
+    return resultado;
+  }
+  function comprobarEmail() {
+    console.log(Object.values(email).includes(""));
   }
 });
