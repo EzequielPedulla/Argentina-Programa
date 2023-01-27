@@ -255,3 +255,11 @@ form {
   color: #2f78bc;
   transition: 300ms;
 }
+
+.alerta {
+  background-color: red;
+  color: white;
+  height: 3rem;
+  text-align: center;
+  margin: 5px;
+}
