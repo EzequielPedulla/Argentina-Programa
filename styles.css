@@ -48,6 +48,7 @@ span {
   color: white;
   transition: 200ms;
 }
+
 .nav-principal a:hover {
   color: #37bcf9;
   transform: scale(1.2, 1.2);
@@ -80,6 +81,7 @@ span {
 .about-me {
   text-align: center;
 }
+
 .services-container {
   background-color: #fff;
   max-width: 120rem;
@@ -267,4 +269,8 @@ form {
   color: white;
   padding: 2px;
   margin-top: 10px;
+}
+#footer p {
+  color: #fff;
+  text-align: center;
 }
